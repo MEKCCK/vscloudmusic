@@ -1,0 +1,14 @@
+{
+    "type": "code",
+    "modid": "vscloudmusic",
+    "name": "VS 云音乐",
+    "authors": [
+        "MEKCCK"
+    ],
+    "description": "在游戏内播放你自己的在线音乐（支持扫码登录、歌单、推荐、电台）",
+    "version": "0.1.0",
+    "dependencies": {
+        "game": "1.22.7"
+    },
+    "side": "Client"
+}

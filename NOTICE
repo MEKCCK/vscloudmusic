@@ -1,0 +1,45 @@
+VS 云音乐 (VS Cloud Music)
+Copyright (C) 2026 MEKCCK
+
+本程序是自由软件：你可以依据自由软件基金会发布的 GNU 通用公共许可证
+（第 3 版，或你选择的任何更新版本）的条款重新分发和/或修改它。
+
+本程序基于「希望它有用」的目的分发，但**不提供任何担保**，
+甚至不提供适销性或特定用途适用性的默示担保。
+详见 GNU 通用公共许可证。完整条款见同目录下的 LICENSE 文件。
+
+---------------------------------------------------------------------------
+第三方依赖（均为 MIT，与本程序的 GPLv3 兼容；它们作为独立程序库被引用）
+
+  NLayer                         MIT   Mark Heath, Andrew Ward
+  Newtonsoft.Json                MIT   James Newton-King
+  Net.Codecrete.QrCodeGenerator  MIT   Manuel Bleichenbacher
+
+---------------------------------------------------------------------------
+参考过的其他实现（仅参考其**设计思路**，未复制代码）
+
+  AllMusic (github.com/Coloryr/AllMusic)   GPL-3.0
+      —— 参考了「宿主与音乐源分离、以能力位声明所支持功能」的架构。
+
+  Folia (github.com/chthollyphile/folia-major)   AGPL-3.0
+      —— 参考了 provider 契约的划分与队列推进的若干做法。
+
+  netapi (github.com/Coloryr/netapi)             AGPL-3.0
+      —— 参考了网易云接口的调用方式。
+
+  与上述项目的重合部分仅为**网易云协议的客观事实**（如固定的 AES 密钥、
+  IV、base62 字母表与 RSA 公钥），这些常量在所有网易云接口实现中都相同，
+  属于事实性信息，不构成代码复制。本项目的实现均为独立编写，结构、
+  命名与错误处理方式与上述项目均不相同。
+
+  加密流程与 HTTP 细节对齐的是 **@neteasecloudmusicapienhanced/api**
+  （MIT，github.com/NeteaseCloudMusicApiEnhanced/api-enhanced），
+  而非上述 AGPL 项目。
+
+  逐函数的比对依据见 docs/license-audit.md。
+
+---------------------------------------------------------------------------
+与游戏的关系
+
+本模组引用但**不重新分发** Vintage Story 的游戏程序集
+（VintagestoryAPI.dll、OpenTK、cairo-sharp 等）；这些文件由玩家自备的游戏提供。

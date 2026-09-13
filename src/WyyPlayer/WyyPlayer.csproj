@@ -1,0 +1,62 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>WyyPlayer</AssemblyName>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <OutputPath>bin\$(Configuration)\Mods\mod</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WyyPlayer.Core\WyyPlayer.Core.csproj" />
+    <ProjectReference Include="..\WyyPlayer.Api\WyyPlayer.Api.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- 与 Core 版本一致；ExcludeAssets=runtime 确保不把 Newtonsoft.Json.dll 复制进模组输出
+         （游戏自带 Lib/Newtonsoft.Json.dll，多带一份可能造成版本冲突）。 -->
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4">
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="VintagestoryAPI">
+      <HintPath>$(VINTAGE_STORY)/VintagestoryAPI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="OpenTK.Audio.OpenAL">
+      <HintPath>$(VINTAGE_STORY)/Lib/OpenTK.Audio.OpenAL.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="OpenTK.Mathematics">
+      <HintPath>$(VINTAGE_STORY)/Lib/OpenTK.Mathematics.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>$(VINTAGE_STORY)/Lib/Newtonsoft.Json.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <!-- HUD 用 Cairo 自绘封面与进度条（SurfaceDrawImage / Context / ImageSurface）。
+         注意程序集名是 **cairo-sharp.dll**（小写连字符）—— 同目录下的 CairoSharp.dll
+         是另一个壳，引错会报「类型定义在未参考的组件 cairo-sharp」。
+         游戏自带此文件，Private=false 避免多带一份。 -->
+    <Reference Include="cairo-sharp">
+      <HintPath>$(VINTAGE_STORY)/Lib/cairo-sharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- 照官方模组模板：assets 目录（语言文件等）必须一起复制到输出，
+         否则 Lang.Get 找不到键，界面会显示成原始 key。 -->
+    <Content Include="assets\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="modinfo.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+</Project>

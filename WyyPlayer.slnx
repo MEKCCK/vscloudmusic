@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/WyyPlayer.Core/WyyPlayer.Core.csproj" />
+    <Project Path="src/WyyPlayer/WyyPlayer.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/WyyPlayer.Core.Tests/WyyPlayer.Core.Tests.csproj" />
+  </Folder>
+  <Folder Name="/tools/">
+    <Project Path="tools/WyyPlayer.ApiProbe/WyyPlayer.ApiProbe.csproj" />
+  </Folder>
+</Solution>

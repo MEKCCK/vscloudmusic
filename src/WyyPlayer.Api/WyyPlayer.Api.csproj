@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>WyyPlayer.Api</RootNamespace>
+    <!-- 附属模组只依赖这一个程序集：里面只有契约，没有任何实现、网络或游戏引用。
+         这样升级时它们不会被 Core 的内部改动牵连。 -->
+    <AssemblyName>WyyPlayer.Api</AssemblyName>
+  </PropertyGroup>
+</Project>
